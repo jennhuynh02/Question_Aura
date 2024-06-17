@@ -30,6 +30,12 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  # Configure the default URL options for the Devise mailer. This is used to generate
+  # full URLs in mailer views, which is particularly important for links in emails
+  # such as account confirmation, password reset, etc. In a development environment,
+  # we typically use 'localhost' with the port 3000.
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 

@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  topic: one
+  ask: MyString
+  asker: one
+  asker_type: Asker
+  created_at: 2024-06-16 21:54:37
+  updated_at: 2024-06-16 21:54:37
+
+two:
+  topic: two
+  ask: MyString
+  asker: two
+  asker_type: Asker
+  created_at: 2024-06-16 21:54:37
+  updated_at: 2024-06-16 21:54:37

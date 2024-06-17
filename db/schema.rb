@@ -10,10 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_06_17_044846) do
+ActiveRecord::Schema.define(version: 2024_06_17_045732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
+    t.bigint "question_id", null: false
+    t.text "answers"
+    t.string "responder_type", null: false
+    t.bigint "responder_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["question_id"], name: "index_answers_on_question_id"
+    t.index ["responder_type", "responder_id"], name: "index_answers_on_responder"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.bigint "answer_id", null: false
+    t.text "body"
+    t.string "commenter_type", null: false
+    t.bigint "commenter_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["answer_id"], name: "index_comments_on_answer_id"
+    t.index ["commenter_type", "commenter_id"], name: "index_comments_on_commenter"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string "ask"
+    t.string "asker_type", null: false
+    t.bigint "asker_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["asker_type", "asker_id"], name: "index_questions_on_asker"
+  end
+
+  create_table "topics", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_topics_on_name"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +65,6 @@ ActiveRecord::Schema.define(version: 2024_06_17_044846) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "answers", "questions"
+  add_foreign_key "comments", "answers"
 end

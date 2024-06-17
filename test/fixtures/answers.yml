@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  question: one
+  answers: MyText
+  responder: one
+  responder_type: Responder
+  created_at: 2024-06-16 21:56:44
+  updated_at: 2024-06-16 21:56:44
+
+two:
+  question: two
+  answers: MyText
+  responder: two
+  responder_type: Responder
+  created_at: 2024-06-16 21:56:44
+  updated_at: 2024-06-16 21:56:44

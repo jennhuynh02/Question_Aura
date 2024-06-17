@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Question:</strong>
+  <%= @answer.question_id %>
+</p>
+
+<p>
+  <strong>Answers:</strong>
+  <%= @answer.answers %>
+</p>
+
+<p>
+  <strong>Responder:</strong>
+  <%= @answer.responder_id %>
+</p>
+
+<p>
+  <strong>Created at:</strong>
+  <%= @answer.created_at %>
+</p>
+
+<p>
+  <strong>Updated at:</strong>
+  <%= @answer.updated_at %>
+</p>
+
+<%= link_to 'Edit', edit_answer_path(@answer) %> |
+<%= link_to 'Back', answers_path %>

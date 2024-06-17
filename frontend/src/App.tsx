@@ -1,10 +1,9 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Home from "./Home";
-import Login from "./components/Login";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import Logout from "./components/Logout";
 import { useSelector } from "react-redux";
 import { RootState } from "./app/store";
+import RoutesConfig from "./RoutesConfig";
 
 const App: React.FC = () => {
   const auth = useSelector((state: RootState) => state.auth);
@@ -24,10 +23,7 @@ const App: React.FC = () => {
             </Link>
           )}
         </nav>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
+        <RoutesConfig />
       </div>
     </Router>
   );

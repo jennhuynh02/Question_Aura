@@ -38,12 +38,14 @@ ActiveRecord::Schema.define(version: 2024_06_17_053248) do
   end
 
   create_table "questions", force: :cascade do |t|
+    t.bigint "topic_id", null: false
     t.string "ask"
     t.string "asker_type", null: false
     t.bigint "asker_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["asker_type", "asker_id"], name: "index_questions_on_asker"
+    t.index ["topic_id"], name: "index_questions_on_topic_id"
   end
 
   create_table "topics", force: :cascade do |t|
@@ -69,4 +71,5 @@ ActiveRecord::Schema.define(version: 2024_06_17_053248) do
 
   add_foreign_key "answers", "questions"
   add_foreign_key "comments", "answers"
+  add_foreign_key "questions", "topics"
 end

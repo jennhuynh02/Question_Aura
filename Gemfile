@@ -21,7 +21,6 @@ group :development, :test do
   gem 'binding_of_caller', '~> 1.0.0' # Allows for inspection of binding context during debugging
   gem 'pry-rails', '~> 0.3.9' # Enhanced IRB console for Rails
   gem 'annotate', '~> 3.1.1' # Automatically add comments summarizing current schema to models and fixtures
-  gem 'web-console', '>= 4.1.0' # Console in the browser for debugging
   gem 'spring', '~> 2.1.0' # Speeds up development by keeping application running in the background
   gem 'dotenv-rails' # Loads environment variables from .env
 end
@@ -29,5 +28,6 @@ end
 group :development do
   gem 'listen', '~> 3.7.0' # Listens to file changes and reloads the application
   gem 'spring-watcher-listen', '~> 2.0.1' # Integrates Spring with Listen to watch for file changes
+  gem 'rb-fsevent' # Add rb-fsevent here
+  gem 'web-console', '>= 4.1.0' # Move web-console to development group
 end
-

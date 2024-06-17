@@ -31,3 +31,5 @@ group :development do
   gem 'rb-fsevent' # Add rb-fsevent here
   gem 'web-console', '>= 4.1.0' # Move web-console to development group
 end
+
+gem "devise", "~> 4.9"

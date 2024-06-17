@@ -15,6 +15,9 @@ gem 'jbuilder', '~> 2.11' # Build JSON APIs with ease
 gem 'bcrypt', '~> 3.1.16' # Use bcrypt for secure password hashing
 gem 'bootsnap', '>= 1.7.7', require: false # Reduces boot times through caching
 
+gem "devise", "~> 4.9" # Authentication solution for Rails
+gem 'rack-cors', require: 'rack/cors' # Add rack-cors gem
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw] # Debugging tool
   gem 'better_errors', '~> 2.9.1' # Improved error page for development
@@ -32,4 +35,3 @@ group :development do
   gem 'web-console', '>= 4.1.0' # Move web-console to development group
 end
 
-gem "devise", "~> 4.9"

@@ -29,7 +29,7 @@ export const login = createAsyncThunk<
 >("auth/login", async (payload, thunkAPI) => {
   try {
     const response = await axios.post<LoginResponse>(
-      `${process.env.REACT_APP_API_URL}/users/sign_in`,
+      `/users/sign_in`,
       { user: payload },
       { withCredentials: true },
     );

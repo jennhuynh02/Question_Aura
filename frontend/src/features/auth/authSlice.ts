@@ -1,8 +1,17 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { LoginPayload, LoginResponse } from "./types";
+
+// Jenn TODO: Add the User interface here
+export interface User {
+  id: string;
+  email: string;
+  last_name: string;
+  first_name: string;
+}
 
 interface AuthState {
-  user: any;
+  user: User | null;
   loading: boolean;
   error: string | null;
 }
@@ -13,24 +22,22 @@ const initialState: AuthState = {
   error: null,
 };
 
-export const login = createAsyncThunk(
-  "auth/login",
-  async (
-    { email, password }: { email: string; password: string },
-    thunkAPI,
-  ) => {
-    try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}/users/sign_in`,
-        { user: { email, password } },
-        { withCredentials: true },
-      );
-      return response.data.user;
-    } catch (error) {
-      return thunkAPI.rejectWithValue("Login failed");
-    }
-  },
-);
+export const login = createAsyncThunk<
+  User,
+  LoginPayload,
+  { rejectValue: string }
+>("auth/login", async (payload, thunkAPI) => {
+  try {
+    const response = await axios.post<LoginResponse>(
+      `${process.env.REACT_APP_API_URL}/users/sign_in`,
+      { user: payload },
+      { withCredentials: true },
+    );
+    return response.data.user;
+  } catch (error) {
+    return thunkAPI.rejectWithValue("Login failed");
+  }
+});
 
 export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   try {

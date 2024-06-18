@@ -29,7 +29,7 @@ export const login = createAsyncThunk<
 >("auth/login", async (payload, thunkAPI) => {
   try {
     const response = await axios.post<LoginResponse>(
-      `/users/sign_in`,
+      `/login`,
       { user: payload },
       { withCredentials: true },
     );
@@ -41,7 +41,7 @@ export const login = createAsyncThunk<
 
 export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   try {
-    await axios.delete(`${process.env.REACT_APP_API_URL}/users/sign_out`, {
+    await axios.delete(`${process.env.REACT_APP_API_URL}/users/logout`, {
       withCredentials: true,
     });
     return;
